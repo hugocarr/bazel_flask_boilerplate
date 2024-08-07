@@ -1,6 +1,6 @@
-# Flask Boilerplate
+# Bazel Flask Boilerplate
 
-This repository outlines a Flask web server ontop of Waitress.  The goal of this boilerplate is to demonstrate how you can use Python to manage code hygiene, testing, monitoring, alerting, continuous integration and continuous deployment.
+This repository outlines a Flask web server ontop of Waitress, managed using Bazel.  The goal of this boilerplate is to demonstrate how you can use Bazel and Python to manage code hygiene, testing, monitoring, alerting, continuous integration and continuous deployment.  It's also for me to be able to get up and running very quickly with Bazel when I want to write a service in Python!  The boilerplate will continue to evolve as I find more things that I want have in all new services I create.
 
 ## Table of Contents
 1. [Code Hygiene](#code-hygiene)
@@ -13,11 +13,13 @@ This repository outlines a Flask web server ontop of Waitress.  The goal of this
 
 ## Code Hygiene
 
-To ensure code hygiene, this project uses `pre-commit` hooks with the following tools:
+To ensure code hygiene, this project currently uses `pre-commit` hooks with the following tools:
 - **Black**: Automatic code formatting.
 - **isort**: Import sorting.
 - **Flake8**: Linting to catch common issues.
 - **Mypy**: Static type checking.
+
+We should look into using Aspect Build `rules_lint`
 
 To set up the pre-commit hooks, run:
 ```sh
@@ -27,7 +29,7 @@ pre-commit install
 
 ## Testing
 
-This project uses `pytest` for testing. A single test is included but currently blank. Add your tests in the `tests` directory.
+This project uses Bazel for testing. Add your tests in the `tests` directory.
 
 To run tests, use:
 ```sh
@@ -60,7 +62,7 @@ To add a new Python dependency, add to `requirements.in`, then use the `./script
 
 ### Local Development Workflow
 
-For local development, the project uses a Docker container that mounts the code into the container. This ensures consistency across different development environments.
+For local development, the project uses Bazel.  Please ensure that you have bazelisk installed.
 
 1. Clone the repository:
 ```sh
