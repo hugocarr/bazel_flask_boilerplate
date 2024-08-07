@@ -9,10 +9,22 @@ repos:
       - id: check-merge-conflict
       - id: requirements-txt-fixer
 
-  - repo: https://github.com/psf/black
-    rev: 23.9.1
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.5.6
     hooks:
-      - id: black
+      - id: ruff
+        args: [ --fix ]
+      - id: ruff-format
+
+  - repo: https://github.com/keith/pre-commit-buildifier
+    rev: 6.1.0
+    hooks:
+      - id: buildifier
+        args: &args
+          # Keep this argument in sync with .bazelci/presubmit.yaml
+          - --warnings=all
+      - id: buildifier-lint
+        args: *args
 
   - repo: https://github.com/PyCQA/isort
     rev: 5.12.0
